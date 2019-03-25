@@ -1,5 +1,9 @@
 package ru.avalon.java.dev.j10.labs.models;
 
+import java.util.Date;
+
+
+
 /**
  * Представление о паспортных данных человека.
  * <p>
@@ -15,7 +19,6 @@ package ru.avalon.java.dev.j10.labs.models;
  *  <li> орган, выдавший документ.
  * </ol>
  */
-class Passport {
 
     /*
      * TODO(Студент): Закончить определение класса.
@@ -37,4 +40,78 @@ class Passport {
      * 5. Обеспечте возможность использования класса за
      *    пределами пакета.
      */
+
+public class Passport {
+    private String serialNumber;
+    private String name;
+    private String surname;
+    private String firstname;
+    private String secondname;
+    private Date BirthDate;
+    private Date getDate;
+    private String Policy;
+
+    public Passport(String serialNumber, String name, String surname, String firstname, String secondname, Date BirthDate, Date getDate, String Policy) {
+        this.serialNumber = serialNumber;
+        this.name = name;
+        this.surname = surname;
+        this.firstname = firstname;
+        this.secondname = secondname;
+        this.BirthDate = BirthDate;
+        this.getDate = getDate;
+        this.Policy = Policy;
+    }
+
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getSecondname() {
+        return secondname;
+    }
+
+    public Date getBirthDate() {
+        return BirthDate;
+    }
+
+    public Date getGetDate() {
+        return getDate;
+    }
+
+    public String getPolicy() {
+        return Policy;
+    }
+    
+    public String getFullName() {
+        String pName = getName();
+        String pSurname = getSurname();
+        String firstName = getFirstname();
+        String secondName = getSecondname();
+
+        if (pName != null && pSurname != null && firstName != null){
+            return pSurname + " " + pName + " " + firstName;
+        }
+
+        if (firstName == null && secondName != null) {
+            return pName + " " + secondName.substring(0 ,1).toUpperCase() + ". " + pSurname;
+        }
+
+        if (firstName == null && secondName == null) {
+            return pName + " " + pSurname;
+        }
+        return "";
+    }
+
 }
